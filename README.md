@@ -163,6 +163,35 @@ Rules for columns
 8 - The non-primary keys describe the  P.K.
 
 
+
+Setting up a DB
+
 script for creating a migration
 
-npx knex migrate:make first-migration
+create a knexfile.js
+
+then $ npx knex migrate:make first-migration
+
+in migration make asyn knex createTables and dropTables
+
+then $ npx knex migrate: latest
+
+code columns (table.column_type('column_name').notNullable().unique() etc)
+
+
+## Setup Knex cleaner
+knex seed:make 00-cleanup
+npm nstall knex-cleaner
+
+
+//inside cleanup seed code this:
+const cleaner = require('knex-cleaner');
+
+exports.seed = function(knex) {
+  return cleaner.clean(knex, {
+    mode: 'truncate', // resets ids
+    ignoreTables: ['knex_migrations', 'knex_migrations_lock'], // don't empty migration tables
+  });
+};
+
+so now you can remove all the tables (except the two data track migrations) in the correct order.

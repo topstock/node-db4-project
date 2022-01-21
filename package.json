@@ -1,7 +1,11 @@
 {
   "name": "node-db4-project",
   "version": "1.0.0",
-  "scripts": {},
+  "scripts": {
+    "server": "nodemon index.js",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BloomInstituteOfTechnology/node-db4-project.git"

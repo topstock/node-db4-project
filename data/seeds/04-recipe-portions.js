@@ -19,7 +19,7 @@ exports.seed = function(knex) {
         {quantity: 0.24, ingredient_id: 5, step_id: 5}, 
         {quantity: 0.25, ingredient_id: 6, step_id: 5}, 
         {quantity: 0.31, ingredient_id: 5, step_id: 6}, 
-        {quantity: 0.31, ingredient_id: 9, step_id: 6}, 
+        {quantity: 0.31, ingredient_id: 8, step_id: 6}, 
         {quantity: 0.10, ingredient_id: 1, step_id: 7}, 
         {quantity: 0.15, ingredient_id: 4, step_id: 7}, 
         {quantity: 0.27, ingredient_id: 5, step_id: 8}, 

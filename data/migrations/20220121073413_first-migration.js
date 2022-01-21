@@ -29,7 +29,7 @@
       })
       .createTable('recipe_portions', table => {
           table.increments('recipe_portion_id').notNullable().unique()
-          table.float('quantity').notNullable().unique()
+          table.float('quantity').notNullable()
           table.integer('step_id')
            // forces integer to be positive
             .unsigned()
@@ -68,5 +68,4 @@
   //you can manipulate anything in a database with these commands.  
   //DO NOT DESTROY THINGS HERE//  You can do real damage with a badly coded migration
   //Always have this ticket reviewed by senior level developer
-  
   

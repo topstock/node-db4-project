@@ -8,9 +8,9 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('recipes').insert([
-        {recipe_name: 'Spaghetti', created_at: Date.now().toString()},
-        {recipe_name: 'Tacos', created_at: Date.now().toString()},
-        {recipe_name: 'Burgers', created_at: Date.now().toString()},
+        {recipe_name: 'Spaghetti', created_at: (new Date).toString()},
+        {recipe_name: 'Tacos', created_at: (new Date).toString()},
+        {recipe_name: 'Burgers', created_at: (new Date).toString()},
       ]);
     });
 };

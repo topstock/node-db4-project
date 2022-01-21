@@ -1,16 +1,13 @@
 const db = require('../../data/db-config.js')
 
 function find() {
-  return db('steps as st')
-    .join('recipes as r', 'r.recipe_id', 'st.recipe_id')
-    .select('')
+  return db('recipes')
 }
 
-async function findById() {
+async function findById(id) {
     
 }
 
 module.exports = {
-    find,
-    findById
+  find
 }

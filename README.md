@@ -27,7 +27,7 @@ After brainstorming with the team it is suggested that a **JSON representation**
 {
   "recipe_id" : 1,
   "recipe_name": "Spaghetti Bolognese",
-  "created_at": "2021-01-01 08:23:19.120",
+  "created_at": "2021-01-01 08:23:19.120", // (new Date()).toString()
   "steps": [
     {
       "step_id": 11,
@@ -181,7 +181,7 @@ code columns (table.column_type('column_name').notNullable().unique() etc)
 
 ## Setup Knex cleaner
 knex seed:make 00-cleanup
-npm nstall knex-cleaner
+npm install knex-cleaner
 
 
 //inside cleanup seed code this:

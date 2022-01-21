@@ -104,3 +104,65 @@ The representation **sent to the server** _could_ look like the following:
   ]
 }
 ```
+
+//SQL please treat foreign keys like foreign keys!
+    pool: {
+      afterCreate: (conn, done) => {
+        // runs after a connection is made to the sqlite engine
+        conn.run('PRAGMA foreign_keys = ON', done); // turn on FK enforcement
+      },
+    },
+
+
+//
+exports.up = async function (knex) {
+  await knex.schema
+    .createTable('recipes', table => {
+      table.increments('recipe_id')
+    })
+    .createTable('species', table => {
+      table.increments('species_id')
+    })
+    .createTable('animals', table => {
+      table.increments('animal_id')
+    })
+    .createTable('zoo_animals', table => {
+      table.increments('zoo_animal_id')
+    })
+};
+
+exports.down = async function (knex) {
+  await knex.schema
+    .dropTableIfExists('zoo_animals')
+    .dropTableIfExists('animals')
+    .dropTableIfExists('species')
+    .dropTableIfExists('zoos')
+};
+
+Rules for tables
+
+1 - Artificial Primary Key (auto generated unique and meaningless) 
+2 - no duplicate columns (email 1, email 2)
+3 - no multi part columns "Virginia Scirrotto"
+4 - no multi valued columns "CS7, Web35, Labs5 "
+5 - no calculated columns (use sql or JS)
+6 - Yes table name use the plural (table_rules vs table_rule)
+7 - Yes table name represents a subject/appointment
+8 - No acronyms or Abreviations table name
+9 - no ambiguous table names "data" "table"
+10 - yes everybody understands what it represents
+
+Rules for columns
+1 -  Uniquename that appears once in DB.
+2 - represents a specific characteristic of subject.
+3 - never store the result of concatenation/calculation
+4 - Holds a single value
+5 - Multivalued/ Multipart columns will kill you
+6 - Columns can't depend on eachother
+7 - The primary key represents the subject
+8 - The non-primary keys describe the  P.K.
+
+
+script for creating a migration
+
+npx knex migrate:make first-migration
